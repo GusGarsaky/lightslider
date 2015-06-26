@@ -4,7 +4,7 @@ class Slider {
     this.slider = el
     this.prevBtn = el.querySelector('.prevBtn')
     this.nextBtn = el.querySelector('.nextBtn')
-    this.images = ['img/im1.jpg','img/img2.jpg','img/img3.jpg','img/img4.jpg','img/img5.jpg','img/img6.jpg','img/img6.jpg']
+    this.images = ['img/img1.jpg','img/img2.jpg','img/img3.jpg','img/img4.jpg','img/img5.jpg','img/img6.jpg','img/img7.jpg']
     this.current = 0
     this.url = this.slider.getAttribute('data-img-folder')
     this.init()
