@@ -4,7 +4,7 @@ class Slider {
     this.slider = el
     this.prevBtn = el.querySelector('.prevBtn')
     this.nextBtn = el.querySelector('.nextBtn')
-    this.images = []
+    this.images = ['img/im1.jpg','img/img2.jpg','img/img3.jpg','img/img4.jpg','img/img5.jpg','img/img6.jpg','img/img6.jpg']
     this.current = 0
     this.url = this.slider.getAttribute('data-img-folder')
     this.init()
@@ -16,7 +16,7 @@ class Slider {
     this.nextBtn.addEventListener('click', function() {
       this.loadNextImg()
     }.bind(this))
-    this.loadImages()
+    // this.loadImages() doesn't works with Github because CORS ajax request
   }
   setModeAuto(option) {
     let self = this;
