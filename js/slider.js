@@ -54,6 +54,7 @@ class Slider {
   }
   loadImages() {
     let self = this;
+    let imgUrls = [];
     let http = new XMLHttpRequest()
     http.open('GET', this.url, true)
 
@@ -65,7 +66,8 @@ class Slider {
         for(let i=0; i<links.length; i++) {
           let content = (links[i].innerText).trim()
           if(self.isValidImg(content)) {
-            self.images.push(self.url+content)
+            //self.images.push(self.url+content)
+            imgUrls.push(self.url+content) // yourfolderpath/imgx.jpg ...
           }
         }
       } else {
@@ -73,6 +75,21 @@ class Slider {
       }
     }
     http.send()
+    createImagesBlob(imgUrls)
+  }
+  createImagesBlob(imgUrls) {
+    let self = this;
+    for(let i=0; i<imgUrls.length; i++) {
+      let http = new XMLHttpRequest()
+      http.responseType = 'blob'
+      http.open('GET', imgUrls[i], true)
+      http.onload = function() {
+        if(this.status === 200) {
+          self.images.push(window.URL.createObjectURL(this.response))
+        }
+      }
+      http.send();
+    } // end for
   }
   createImage(side) {
     let img = document.createElement('img')
