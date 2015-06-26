@@ -7,6 +7,7 @@ class Slider {
     this.images = []
     this.current = 0
     this.url = this.slider.getAttribute('data-img-folder')
+    console.log(this.url)
     this.init()
   }
   init() {
