@@ -66,9 +66,10 @@ class Slider {
         for(let i=0; i<links.length; i++) {
           let content = (links[i].innerText).trim()
           if(self.isValidImg(content)) {
-            //self.images.push(self.url+content)
             imgUrls.push(self.url+content) // yourfolderpath/imgx.jpg ...
           }
+          // create blobs from retrieved images
+          self.createBlobImages(imgUrls)
         }
       } else {
         console.log('error: '+http.response)
@@ -77,7 +78,7 @@ class Slider {
     http.send()
     createImagesBlob(imgUrls)
   }
-  createImagesBlob(imgUrls) {
+  createBlobImages(imgUrls) {
     let self = this;
     for(let i=0; i<imgUrls.length; i++) {
       let http = new XMLHttpRequest()
